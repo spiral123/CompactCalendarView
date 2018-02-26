@@ -110,7 +110,6 @@ class CompactCalendarController {
     private Calendar startCalendar = Calendar.getInstance();
     private Calendar endCalendar = Calendar.getInstance();
 
-
     private int pastDaysTextColor;
 
     private TimeZone timeZone;
@@ -484,6 +483,11 @@ class CompactCalendarController {
         if (dayOfMonth < calendarWithFirstDayOfMonth.getActualMaximum(Calendar.DAY_OF_MONTH)
                 && dayOfMonth >= 0) {
             calendarWithFirstDayOfMonth.add(Calendar.DATE, dayOfMonth);
+
+            if (calendarWithFirstDayOfMonth.getTimeInMillis() < startCalendar.getTimeInMillis() ||
+                    calendarWithFirstDayOfMonth.getTimeInMillis() > endCalendar.getTimeInMillis()) {
+                return;
+            }
 
             currentCalender.setTimeInMillis(calendarWithFirstDayOfMonth.getTimeInMillis());
             performOnDayClickCallback(currentCalender.getTime());
