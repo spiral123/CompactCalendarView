@@ -309,6 +309,14 @@ public class CompactCalendarView extends View {
         compactCalendarController.setShouldSelectFirstDayOfMonthOnScroll(shouldSelectFirstDayOfMonthOnScroll);
     }
 
+    public void setCalendarStart(long startInSeconds) {
+        compactCalendarController.setCalendarStart(startInSeconds);
+    }
+
+    public void setCalendarEnd(long endInSeconds) {
+        compactCalendarController.setCalendarEnd(endInSeconds);
+    }
+
     public void setCurrentSelectedDayIndicatorStyle(final int currentSelectedDayIndicatorStyle){
         compactCalendarController.setCurrentSelectedDayIndicatorStyle(currentSelectedDayIndicatorStyle);
         invalidate();
